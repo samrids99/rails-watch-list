@@ -1,0 +1,16 @@
+<h1><%= @list.name %></h1>
+<p><%= link_to "Bookmark a movie in #{@list.name}", new_list_bookmark_path(@list) %></p>
+<br>
+<ol>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <%= bookmark.movie.title %>
+      <%= link_to list_bookmark_path(@list, bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-regular fa-trash-can"></i>
+     <% end %>
+    </li>
+  <% end %>
+</ol>
+<br>
+<br>
+<p><%= link_to "Back to lists", lists_path %></p>
