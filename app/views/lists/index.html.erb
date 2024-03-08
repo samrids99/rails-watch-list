@@ -1,7 +1,21 @@
+<div class="container1 align-center">
 <h1>Our movie lists 💗</h1>
+
 <ul>
-<% @lists.each do |list| %>
-<li><%= link_to list.name, list_path(list)  %></li>
-<% end %>
+  <% @lists.each do |list| %>
+    <li>
+      <%= link_to list.name, list_path(list) %>
+      <%= link_to list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-regular fa-trash-can"></i>
+      <% end %>
+      <% if list.list_avatar.attached? %>
+        <%= cl_image_tag list.list_avatar.key, height: 100, width: 100, crop: :fill %>
+      <% else %>
+        <p>No avatar given</p>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
+
 <%= link_to "Create a new list", new_list_path %>
+</div>

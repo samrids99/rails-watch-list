@@ -1,6 +1,11 @@
 <h1><%= @list.name %></h1>
 <p><%= link_to "Bookmark a movie in #{@list.name}", new_list_bookmark_path(@list) %></p>
 <br>
+<% if @list.list_avatar.attached? %>
+        <%= cl_image_tag @list.list_avatar.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <p>No avatar given</p>
+      <% end %>
 <ol>
   <% @list.bookmarks.each do |bookmark| %>
     <li>

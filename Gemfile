@@ -12,6 +12,8 @@ gem "bootstrap", "~> 5.2"
 
 gem 'faker'
 
+gem "cloudinary"
+
 gem "autoprefixer-rails"
 
 gem "font-awesome-sass", "~> 6.1"
